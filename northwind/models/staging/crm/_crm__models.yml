@@ -1,0 +1,21 @@
+version: 2  
+
+models:
+  - name: stg_customers
+    description: "Esta é uma tabela de preparação para dados de clientes do banco de dados northwinddb."
+    columns:
+      - name: customer_id
+        description: "O identificador exclusivo para cada cliente."
+        tests:
+          - not_null
+          - unique
+      - name: name
+        description: "O nome do cliente."
+        tests:
+          - not_null
+      - name: email
+        description: "O endereço de e-mail do cliente."
+        tests:
+          - not_null
+          - unique
+      
