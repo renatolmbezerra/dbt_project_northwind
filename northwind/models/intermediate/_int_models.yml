@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_orders
+    description: "modelo intermediate para pedidos"
+    columns:
+      - name: order_id      
+        description: "ID do pedido"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "ID do cliente"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: amount
+        description: "Valor total do pedido"
+        tests:
+          - not_null

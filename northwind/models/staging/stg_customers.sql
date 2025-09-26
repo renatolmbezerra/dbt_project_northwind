@@ -6,7 +6,7 @@ with sources as (
 )
 
 select 
-    id as customers_id,
+    id as customer_id,
     name,
     email
 from sources

@@ -1,0 +1,28 @@
+{{ config(
+    materialized='view',
+    schema='intermediate'
+)}}
+
+with orders_cte as (
+    select 
+        * 
+    from {{ ref('stg_orders') }}
+),
+
+customers_cte as (
+    select 
+        customer_id,
+        name 
+    from {{ ref('stg_customers') }}
+)
+
+select 
+    o.order_id,
+    o.order_date,
+    o.customer_id,
+    c.name as customer_name,
+    o.status,
+    o.amount,
+    o.country_code
+from orders_cte o
+join customers_cte c on o.customer_id = c.customer_id

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: mart_orders_summary
+    description: "A summary of orders including total sales and number of orders per customer."
+    columns:
+      - name: order_id
+        description: "O identificador único para cada pedido."
+      - name: customer_id
+        description: "O identificador único para cada cliente."
+      - name: customer_name
+        description: "O nome do cliente que fez o pedido."
+      - name: order_status
+        description: "O status atual do pedido."
+      - name: total_sales
+        description: "O valor total das vendas para o pedido."
+      - name: total_orders
+        description: "O número total de pedidos feitos pelo cliente."
