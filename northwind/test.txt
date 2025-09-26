@@ -1,0 +1,81 @@
+[0m09:11:46  Running with dbt=1.10.9
+[0m09:11:46  Registered adapter: postgres=1.9.0
+[0m09:11:47  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.northwind.mart
+- models.northwind.intermediate
+[0m09:11:47  Found 4 seeds, 2 models, 10 data tests, 2 sources, 434 macros
+[0m09:11:47  
+[0m09:11:47  Concurrency: 4 threads (target='dev')
+[0m09:11:47  
+[0m09:11:52  1 of 10 START test accepted_values_stg_orders_status__placed__shipped__completed__returned  [RUN]
+[0m09:11:52  2 of 10 START test not_null_stg_customers_customer_id .......................... [RUN]
+[0m09:11:52  3 of 10 START test not_null_stg_customers_email ................................ [RUN]
+[0m09:11:52  4 of 10 START test not_null_stg_customers_name ................................. [RUN]
+[0m09:11:53  1 of 10 FAIL 1 accepted_values_stg_orders_status__placed__shipped__completed__returned  [[31mFAIL 1[0m in 1.24s]
+[0m09:11:53  5 of 10 START test not_null_stg_orders_customer_id ............................. [RUN]
+[0m09:11:53  4 of 10 FAIL 1 not_null_stg_customers_name ..................................... [[31mFAIL 1[0m in 1.24s]
+[0m09:11:53  3 of 10 FAIL 1 not_null_stg_customers_email .................................... [[31mFAIL 1[0m in 1.24s]
+[0m09:11:53  6 of 10 START test not_null_stg_orders_order_id ................................ [RUN]
+[0m09:11:53  7 of 10 START test relationships_stg_orders_customer_id__customer_id__ref_stg_customers_  [RUN]
+[0m09:11:53  2 of 10 ERROR not_null_stg_customers_customer_id ............................... [[31mERROR[0m in 1.29s]
+[0m09:11:53  8 of 10 START test unique_stg_customers_customer_id ............................ [RUN]
+[0m09:11:55  8 of 10 ERROR unique_stg_customers_customer_id ................................. [[31mERROR[0m in 2.04s]
+[0m09:11:55  9 of 10 START test unique_stg_customers_email .................................. [RUN]
+[0m09:11:56  7 of 10 ERROR relationships_stg_orders_customer_id__customer_id__ref_stg_customers_  [[31mERROR[0m in 2.19s]
+[0m09:11:56  10 of 10 START test unique_stg_orders_order_id ................................. [RUN]
+[0m09:11:56  5 of 10 PASS not_null_stg_orders_customer_id ................................... [[32mPASS[0m in 2.49s]
+[0m09:11:56  6 of 10 PASS not_null_stg_orders_order_id ...................................... [[32mPASS[0m in 2.47s]
+[0m09:11:57  9 of 10 PASS unique_stg_customers_email ........................................ [[32mPASS[0m in 1.17s]
+[0m09:11:57  10 of 10 PASS unique_stg_orders_order_id ....................................... [[32mPASS[0m in 1.20s]
+[0m09:11:58  
+[0m09:11:58  Finished running 10 data tests in 0 hours 0 minutes and 10.60 seconds (10.60s).
+[0m09:11:58  
+[0m09:11:58  [31mCompleted with 6 errors, 0 partial successes, and 0 warnings:[0m
+[0m09:11:58  
+[0m09:11:58  [31mFailure in test accepted_values_stg_orders_status__placed__shipped__completed__returned (models\staging\_stg__models.yml)[0m
+[0m09:11:58    Got 1 result, configured to fail if != 0
+[0m09:11:58  
+[0m09:11:58    compiled code at target\compiled\northwind\models\staging\_stg__models.yml\accepted_values_stg_orders_7c9e0be389dac14a09b2140966f0792f.sql
+[0m09:11:58  
+[0m09:11:58  [31mFailure in test not_null_stg_customers_name (models\staging\_stg__models.yml)[0m
+[0m09:11:58    Got 1 result, configured to fail if != 0
+[0m09:11:58  
+[0m09:11:58    compiled code at target\compiled\northwind\models\staging\_stg__models.yml\not_null_stg_customers_name.sql
+[0m09:11:58  
+[0m09:11:58  [31mFailure in test not_null_stg_customers_email (models\staging\_stg__models.yml)[0m
+[0m09:11:58    Got 1 result, configured to fail if != 0
+[0m09:11:58  
+[0m09:11:58    compiled code at target\compiled\northwind\models\staging\_stg__models.yml\not_null_stg_customers_email.sql
+[0m09:11:58  
+[0m09:11:58  [31mFailure in test not_null_stg_customers_customer_id (models\staging\_stg__models.yml)[0m
+[0m09:11:58    Database Error in test not_null_stg_customers_customer_id (models\staging\_stg__models.yml)
+  column "customer_id" does not exist
+  LINE 16: select customer_id
+                  ^
+  HINT:  Perhaps you meant to reference the column "stg_customers.customers_id".
+  compiled code at target\run\northwind\models\staging\_stg__models.yml\not_null_stg_customers_customer_id.sql
+[0m09:11:58  
+[0m09:11:58    compiled code at target\compiled\northwind\models\staging\_stg__models.yml\not_null_stg_customers_customer_id.sql
+[0m09:11:58  
+[0m09:11:58  [31mFailure in test unique_stg_customers_customer_id (models\staging\_stg__models.yml)[0m
+[0m09:11:58    Database Error in test unique_stg_customers_customer_id (models\staging\_stg__models.yml)
+  column "customer_id" does not exist
+  LINE 15:     customer_id as unique_field,
+               ^
+  HINT:  Perhaps you meant to reference the column "stg_customers.customers_id".
+  compiled code at target\run\northwind\models\staging\_stg__models.yml\unique_stg_customers_customer_id.sql
+[0m09:11:58  
+[0m09:11:58    compiled code at target\compiled\northwind\models\staging\_stg__models.yml\unique_stg_customers_customer_id.sql
+[0m09:11:58  
+[0m09:11:58  [31mFailure in test relationships_stg_orders_customer_id__customer_id__ref_stg_customers_ (models\staging\_stg__models.yml)[0m
+[0m09:11:58    Database Error in test relationships_stg_orders_customer_id__customer_id__ref_stg_customers_ (models\staging\_stg__models.yml)
+  column "customer_id" does not exist
+  LINE 21:     select customer_id as to_field
+                      ^
+  HINT:  Perhaps you meant to reference the column "stg_customers.customers_id".
+  compiled code at target\run\northwind\models\staging\_stg__models.yml\relationships_stg_orders_96411fe0c89b49c3f4da955dfd358ba0.sql
+[0m09:11:58  
+[0m09:11:58    compiled code at target\compiled\northwind\models\staging\_stg__models.yml\relationships_stg_orders_96411fe0c89b49c3f4da955dfd358ba0.sql
+[0m09:11:58  
+[0m09:11:58  Done. PASS=4 WARN=0 ERROR=6 SKIP=0 NO-OP=0 TOTAL=10
